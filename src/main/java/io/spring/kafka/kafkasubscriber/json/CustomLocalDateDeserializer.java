@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 public class CustomLocalDateDeserializer extends StdDeserializer<LocalDate>{
 
 	private static final long serialVersionUID = 1L;
+	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
 	
 	protected CustomLocalDateDeserializer() {
 		super(LocalDate.class);
@@ -26,7 +27,6 @@ public class CustomLocalDateDeserializer extends StdDeserializer<LocalDate>{
 	public LocalDate deserialize(JsonParser p, DeserializationContext ctxt)
 			throws IOException, JsonProcessingException {
 		// TODO Auto-generated method stub
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
 		return LocalDate.parse(p.readValueAs(String.class),formatter);
 	}
 
