@@ -26,7 +26,8 @@ public class CustomLocalDateDeserializer extends StdDeserializer<LocalDate>{
 	public LocalDate deserialize(JsonParser p, DeserializationContext ctxt)
 			throws IOException, JsonProcessingException {
 		// TODO Auto-generated method stub
-		return LocalDate.parse(p.readValueAs(String.class));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+		return LocalDate.parse(p.readValueAs(String.class),formatter);
 	}
 
 	
